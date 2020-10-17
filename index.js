@@ -16,15 +16,19 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.send("<h1>Hello, This is NodeJS App</h1>");
 });
-
-app.get("/quiz/results/:username", (req, res) => {
-  const userName = req.params;
-  const user = users.filter((user) => {
-    user.userName === userName;
+//Get all question and answers for specific username
+app.get("/quiz/results/:userName", (req, res) => {
+  const userNameFromParams = req.params;
+  const dataFilterByUserName = [];
+  users.filter((u) => {
+    if (u.userName == userNameFromParams.userName) dataFilterByUserName.push(u);
   });
-  if (user) {
-    res.status(200).json(user.userResults);
+  console.log(dataFilterByUserName);
+  if (dataFilterByUserName.length > 0) {
+    res.status(200).json(dataFilterByUserName.userResults);
   } else {
-    res.status(400).send(`There is no user like ${req.params}`);
+    res
+      .status(400)
+      .send(`There is no user like ${userNameFromParams.userName}`);
   }
 });
