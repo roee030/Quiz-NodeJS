@@ -1,0 +1,56 @@
+[
+  {
+    "userName": "MorGonen",
+    "id": 0,
+    "userResults": [
+      { "questionId": 0, "answerId": 2 },
+      { "questionId": 1, "answerId": 1 },
+      { "questionId": 2, "answerId": 2 },
+      { "questionId": 3, "answerId": 1 }
+    ]
+  },
+  {
+    "userName": "RoeeAngel",
+    "id": 1,
+    "userResults": [
+      { "questionId": 0, "answerId": 0 },
+      { "questionId": 1, "answerId": 1 },
+      { "questionId": 2, "answerId": 2 },
+      { "questionId": 3, "answerId": 3 }
+    ],
+    "friendsGuess": [
+      {
+        "userName": "DorLevi",
+        "id": 2,
+        "QuizAnswers": [
+          { "questionId": 0, "answerId": 0 },
+          { "questionId": 1, "answerId": 0 },
+          { "questionId": 2, "answerId": 0 },
+          { "questionId": 3, "answerId": 0 }
+        ]
+      }
+    ]
+  },
+  {
+    "userName": "MorGonen",
+    "id": 0,
+    "userResults": [
+      { "questionId": 0, "answerId": 2 },
+      { "questionId": 1, "answerId": 1 },
+      { "questionId": 2, "answerId": 2 },
+      { "questionId": 3, "answerId": 1 }
+    ],
+    "friendsGuess": [
+      {
+        "userName": "DorLevi",
+        "id": 2,
+        "QuizAnswers": [
+          { "questionId": 0, "answerId": 0 },
+          { "questionId": 1, "answerId": 0 },
+          { "questionId": 2, "answerId": 0 },
+          { "questionId": 3, "answerId": 0 }
+        ]
+      }
+    ]
+  }
+]
