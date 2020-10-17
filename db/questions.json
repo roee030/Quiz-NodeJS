@@ -1,0 +1,38 @@
+[
+  {
+    "question": { "id": 0, "text": "What is my favorite food ?" },
+    "answers": [
+      { "answerId": 1, "text": "Hamburger" },
+      { "answerId": 2, "text": "Pizza" },
+      { "answerId": 3, "text": "Salad" },
+      { "answerId": 4, "text": "Dessert" }
+    ]
+  },
+  {
+    "question": { "id": 1, "text": "What is my favorite color ?" },
+    "answers": [
+      { "answerId": 1, "text": "Red" },
+      { "answerId": 2, "text": "Blue" },
+      { "answerId": 3, "text": "Green" },
+      { "answerId": 4, "text": "Pink" }
+    ]
+  },
+  {
+    "question": { "id": 2, "text": "What is my favorite style of music ?" },
+    "answers": [
+      { "answerId": 1, "text": "Rock" },
+      { "answerId": 2, "text": "Classical" },
+      { "answerId": 3, "text": "Trance" },
+      { "answerId": 4, "text": "Pop" }
+    ]
+  },
+  {
+    "question": { "id": 3, "text": "What is my favorite place to hang out? ?" },
+    "answers": [
+      { "answerId": 1, "text": "Home" },
+      { "answerId": 2, "text": "Club" },
+      { "answerId": 3, "text": "Beach" },
+      { "answerId": 4, "text": "Shopping mall" }
+    ]
+  }
+]
