@@ -27,12 +27,21 @@
     ]
   },
   {
-    "question": { "id": 3, "text": "What is my favorite place to hang out? ?" },
+    "question": { "id": 3, "text": "What is my favorite place to hang out?" },
     "answers": [
       { "answerId": 1, "text": "Home" },
       { "answerId": 2, "text": "Club" },
       { "answerId": 3, "text": "Beach" },
       { "answerId": 4, "text": "Shopping mall" }
+    ]
+  },
+  {
+    "question": { "id": 4, "text": "What is my favorite movie genres ?" },
+    "answers": [
+      { "answerId": 1, "text": "Action" },
+      { "answerId": 2, "text": "Comedy" },
+      { "answerId": 3, "text": "Crime" },
+      { "answerId": 4, "text": "Drama" }
     ]
   }
 ]
