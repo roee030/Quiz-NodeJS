@@ -4,7 +4,7 @@ const app = express();
 const users = require("./db/users.json");
 const questions = require("./db/questions.json");
 const fs = require("fs");
-
+const { v4: uuidv4 } = require("uuid");
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server started and is listen to port 5000");
@@ -66,10 +66,50 @@ app.get("/quiz/results/:userName/rank/:friendUserName", (req, res) => {
     }
   }
 });
+
+//Save new User to db
+app.post("/quiz/:userName/create", (req, res) => {
+  const { userName, userResults } = req.body;
+  if (!userName || !userResults) {
+    res.status(400).send("You didnt send user data to the body");
+  }
+  const checkDuplicate = checkDuplicateUserName(userName);
+  if (checkDuplicate.length > 0) {
+    res.status(400).send(`${userName} already taken. try agian`);
+  } else {
+    const userData = JSON.parse(users);
+    users.push({ userName, id: parseInt(uuidv4()), userResults });
+    // addDataToUserdb(users);
+  }
+});
+
+//Functions
+
+const addDataToUserdb = (obj) => {
+  try {
+    fs.readFile("./db/users.json", function (err, data) {
+      let json = JSON.parse(readFromFile("./db/users.json"));
+      json.push(obj);
+      fs.writeFile("./db/users.json", JSON.stringify(json));
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const checkDuplicateUserName = (userName) => {
+  let usersdb = JSON.parse(readFromFile("./db/users.json"));
+  return usersdb.filter((u) => u.userName == userName);
+};
+
 const readFromFile = (filename) => {
-  const dataBuffer = fs.readFileSync(filename);
-  const dataJSON = dataBuffer.toString();
-  return dataJSON;
+  try {
+    const dataBuffer = fs.readFileSync(filename);
+    const dataJSON = dataBuffer.toString();
+    return dataJSON;
+  } catch (e) {
+    return [];
+  }
 };
 const getMyAnswersByUserName = (userName, friendUserName) => {
   let usersdb = JSON.parse(readFromFile("./db/users.json"));
