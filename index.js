@@ -92,19 +92,26 @@ app.post("/quiz/:userName/create", (req, res) => {
   }
 });
 
-app.put("/quiz/:userName/update", (req, res) => {
+app.put("/quiz/:userNameToChange/update", (req, res) => {
+  const { userNameToChange } = req.params;
+
+  console.log(userNameToChange);
   const { userName, userResults } = req.body;
   if (!userName || !userResults) {
     res.status(400).send("You didnt send user data to the body");
   }
-  const checkDuplicate = checkDuplicateUserName(userName);
+  const checkDuplicate = checkDuplicateUserName(userNameToChange);
   if ((checkDuplicate.length = 0)) {
     res.status(400).send(`This user ${userName} not exist `);
   } else {
     users.forEach((u, i) => {
-      if (u.userName === userName) {
-        u.userName = userName;
-        u.userResults = userResults;
+      if (u.userName === userNameToChange) {
+        console.log("asdf");
+
+        let usersdb = JSON.parse(readFromFile("./db/users.json"));
+        usersdb[i].userName = userName;
+        usersdb[i].userResults = userResults;
+        fs.writeFileSync("./db/users.json", JSON.stringify(usersdb));
       }
     });
   }
