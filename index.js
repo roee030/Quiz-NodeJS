@@ -77,9 +77,36 @@ app.post("/quiz/:userName/create", (req, res) => {
   if (checkDuplicate.length > 0) {
     res.status(400).send(`${userName} already taken. try agian`);
   } else {
-    const userData = JSON.parse(users);
-    users.push({ userName, id: parseInt(uuidv4()), userResults });
+    const userData = {
+      userName,
+      id: parseInt(uuidv4()),
+      userResults,
+    };
+    let usersdb = JSON.parse(readFromFile("./db/users.json"));
+    usersdb.push(userData);
+    const dataJson = JSON.stringify(usersdb);
+
+    fs.writeFileSync("./db/users.json", dataJson);
+    console.log("Here at post method");
     // addDataToUserdb(users);
+  }
+});
+
+app.put("/quiz/:userName/update", (req, res) => {
+  const { userName, userResults } = req.body;
+  if (!userName || !userResults) {
+    res.status(400).send("You didnt send user data to the body");
+  }
+  const checkDuplicate = checkDuplicateUserName(userName);
+  if ((checkDuplicate.length = 0)) {
+    res.status(400).send(`This user ${userName} not exist `);
+  } else {
+    users.forEach((u, i) => {
+      if (u.userName === userName) {
+        u.userName = userName;
+        u.userResults = userResults;
+      }
+    });
   }
 });
 
